@@ -1,0 +1,6 @@
+{
+  "name": "Zalith Renderer Plugin",
+  "description": "High-performance translation layer plugin optimizing desktop OpenGL 4.6 to Vulkan 1.1 for Unisoc T616 and ARM Mali-G57 GPU in Zalith Launcher.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

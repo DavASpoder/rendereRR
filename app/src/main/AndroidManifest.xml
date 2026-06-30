@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".receiver.RendererPluginReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.zalith.launcher.action.QUERY_RENDERERS" />
+                <action android:name="com.zalith.launcher.action.GET_RENDERER_INFO" />
+                <action android:name="com.zalith.launcher.RENDERER_PLUGIN" />
+                <action android:name="org.pojavlauncher.action.RENDERER_PROVIDER" />
+            </intent-filter>
+            <meta-data
+                android:name="zalith.renderer.id"
+                android:value="zink_mali_g57_fp16" />
+            <meta-data
+                android:name="zalith.renderer.name"
+                android:value="Zink GL 4.6 (Mali-G57 FP16 Optimized)" />
+            <meta-data
+                android:name="zalith.renderer.so_name"
+                android:value="libzink_mali.so" />
+            <meta-data
+                android:name="zalith.renderer.vblank_mode"
+                android:value="0" />
+            <meta-data
+                android:name="zalith.renderer.fp16_scaling"
+                android:value="true" />
+        </receiver>
+
+        <service
+            android:name=".service.RendererPluginService"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.zalith.launcher.action.BIND_RENDERER" />
+                <action android:name="org.pojavlauncher.action.BIND_RENDERER" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
